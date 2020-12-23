@@ -1,0 +1,38 @@
+<div *ngIf="role == 'Admin'">
+    <h2>As you are admin, you can view all the transactions</h2>
+    <h2>Or view transaction of a certain user: 
+        <input class="input" [(ngModel)]="inputId" pInputText placeholder="id"/>
+        <button style="margin-left: 5px" pButton type="button" label="View" (click)='getUserTransactions(inputId)'></button>
+    </h2>
+    <h2 *ngIf="totalCommission | async as tc">Total commission is: {{tc}}</h2>
+</div>
+
+<h2 *ngIf="role == 'User'">Your transactions:</h2>
+
+<div class="card">
+    <p-table [value]="transactions" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Raw sum</th>
+                <th>Commission</th>
+                <th>Total</th>
+                <th>From account</th>
+                <th>To account</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-transaction>
+            <tr>
+                <td>{{transaction.id}}</td>
+                <td>{{transaction.date}}</td>
+                <td>{{transaction.rawSum}}</td>
+                <td>{{transaction.commissionSum}}</td>
+                <td>{{transaction.totalSum}}</td>
+                <td>{{transaction.fromAccountNumber}}</td>
+                <td>{{transaction.toAccountNumber}}</td>                
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,14 @@
+<div *ngIf='user | async as u'>
+    <p>You are signed in as: {{u.login}}, {{u.fullName}}</p>
+    <p>Your role is: {{u.role}}</p>
+    <p>Your account number is: {{u.account.number}}</p>
+    <p>You have: {{u.account.sum}}</p>
+    <button style="margin: 5px" pButton type="button" label="Transfer" routerLink='/transfer'></button>
+    <button style="margin: 5px" pButton type="button" label="Transactions" routerLink='/transactions'></button>
+    <button style="margin: 5px" pButton type="button" label="Sign out" (click)="signout()"></button>
+</div>
+
+<div *ngIf='!role'>
+    <button style="margin: 5px" pButton type="button" label="Sign in" routerLink='/sign-in'></button>
+    <button style="margin: 5px" pButton type="button" label="Sign up" routerLink='/sign-up'></button>
+</div>

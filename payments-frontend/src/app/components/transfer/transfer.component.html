@@ -1,0 +1,25 @@
+<div #ngFormGroup="ngForm" [formGroup]="formGroup" class="clbr--form-horizontal form needs-validation"
+                role="form">
+
+    <div class="p-field">
+        <label>From: </label>
+        <label *ngIf='user | async as u'>{{u.account.number}}</label>
+    </div>
+    <div class="p-field">
+        <label>To: </label>
+        <input class="input" formControlName="to" pInputText />
+    </div>
+    <div class="p-field">
+        <label>Amount: </label>
+        <input class="input" formControlName="amount" pInputText />
+    </div>
+    <div *ngIf="checked">
+        <p>Commission is: {{payment.commission}}</p>
+        <p>Total sum is: {{payment.total}}</p>
+    </div>
+    <div *ngIf="success">
+        <p>Your transaction was successful</p>
+    </div>
+    <button style="margin-top: 5px" pButton type="button" label="Calulate" (click)='check()'></button>
+    <button style="margin-top: 5px" [disabled]="!checked" pButton type="button" label="Send" (click)='transfer()'></button>
+</div>

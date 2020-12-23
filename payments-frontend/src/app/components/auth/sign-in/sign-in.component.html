@@ -1,0 +1,15 @@
+<div #ngFormGroup="ngForm" [formGroup]="formGroup" class="clbr--form-horizontal form needs-validation"
+                role="form">
+
+    <div class="p-field">
+        <label>Login</label>
+        <input class="input" formControlName="login" pInputText />
+    </div>
+    <div class="p-field">
+        <label>Password</label>
+        <input class="input" formControlName="password" pInputText type="password"/>
+    </div>
+
+    <button style="margin-top: 5px" pButton type="button" label="Sign in" (click)='signin()'></button>
+
+</div>

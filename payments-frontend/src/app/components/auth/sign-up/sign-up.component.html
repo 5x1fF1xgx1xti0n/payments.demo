@@ -1,0 +1,22 @@
+<div #ngFormGroup="ngForm" [formGroup]="formGroup" class="clbr--form-horizontal form needs-validation"
+                role="form">
+
+    <div class="p-field">
+        <label>Login</label>
+        <input class="input" formControlName="login" pInputText />
+    </div>
+    <div class="p-field">
+        <label>Full name</label>
+        <input class="input" formControlName="fullName" pInputText />
+    </div>
+    <div class="p-field">
+        <label>Password</label>
+        <input class="input" formControlName="password" pInputText type="password"/>
+    </div>
+</div>
+<div class="p-field">
+    <label>Confirm Password</label>
+    <input class="input" [(ngModel)]="confirmPassword" pInputText type="password"/>
+    <p style="color: crimson" *ngIf="miss">Password doesn't match. Try again</p>
+</div>
+<button style="margin-top: 5px" pButton type="button" label="Sign up" (click)='signup()'></button>
